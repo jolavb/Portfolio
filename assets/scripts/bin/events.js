@@ -21,13 +21,6 @@ const loadClickEvents = function () {
   $('.navlink').on('click', linksHandler)
   $('.arrow').on('click', scrollLinks)
   $('.container-fluid').keyup(keyActions)
-
-  let lastScroll = 0
-  $(window).scroll(function (event) {
-    const st = $(this).scrollTop()
-    st > lastScroll? console.log('up') : console.log('down')
-    lastScroll = st
-  })
 }
 
 // Navbar Link Events Show Views depending on target
