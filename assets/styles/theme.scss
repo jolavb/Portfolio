@@ -45,10 +45,34 @@ html, body {
   // background: #02020257;
   .nav {
     position: relative;
+    text-align: center
   }
   > .nav-pills > li {
     float: none;
   }
+}
+
+.arrow {
+    margin: 10px;
+  > .arrow-up {
+    position: relative;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 10px solid $transblack;
+  }
+  > .arrow-down {
+    position: relative;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 10px solid $transblack;
+  }
+
 }
 
 // Spinner

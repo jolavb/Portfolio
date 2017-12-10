@@ -1,16 +1,21 @@
 
 <img class = 'background-intro' src = 'public/hiking.png'>
 <div class = 'row main'>
+  {{#unless view}}
   <div class = 'col col-md-2 sidebar'>
     <nav class = 'navbar'>
       <ul class = 'nav nav-pills'>
-        <li id= 'about' role="presentation" ><a href="#">About Me</a></li>
-        <li id= 'projects' role="presentation" ><a href="#">Projects</a></li>
-        <li id= 'experiance' role="presentation" ><a href="#">Experience</a></li>
-        <li id= 'timeline' role="presentation"><a href="#">Timeline</a></li>
+        <li class = 'arrow up'><div class="arrow-up"></div></li>
+        <li class = 'navlink active' id= 'home' role="presentation" ><a href="#">Home</a></li>
+        <li class = 'navlink' id= 'about' role="presentation" ><a href="#">About Me</a></li>
+        <li class = 'navlink' id= 'projects' role="presentation" ><a href="#">Projects</a></li>
+        <li class = 'navlink' id= 'experiance' role="presentation" ><a href="#">Experience</a></li>
+        <li class = 'navlink' id= 'timeline' role="presentation"><a href="#">Timeline</a></li>
+        <li class = 'arrow down'><div class="arrow-down"></div></li>
       </ul>
     </nav>
   </div>
+  {{/unless}}
   <div class = 'col col-md-10 content'>
     <div class = 'intro-text-wrap'>
       <h1>Julian Barthold</h1>

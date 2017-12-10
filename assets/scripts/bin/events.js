@@ -1,20 +1,46 @@
-const about = require('./../templates/about.handlebars')
 
-// Loads Navbar Link Events
+// HandleBars Templates
+const home = require('./../templates/main.handlebars')
+const about = require('./../templates/about.handlebars')
+const projects = require('./../templates/projects.handlebars')
+const experiance = require('./../templates/experiance.handlebars')
+const timeline = require('./../templates/timeline.handlebars')
+
+// Consolidate Handlebars Views
+const views = {
+  home: home({view: true}),
+  about: about(),
+  projects: projects(),
+  experiance: experiance(),
+  timeline: timeline()
+}
+
+// Loads Navbar Link Events on Main Page Load
+
 const loadClickEvents = function () {
-  $('li').on('click', linksHandler)
+  $('.navlink').on('click', linksHandler)
+  $('.arrow').on('click', scrollLinks)
+  $('.container-fluid').keyup(keyActions)
+
+  let lastScroll = 0
+  $(window).scroll(function (event) {
+    const st = $(this).scrollTop()
+    st > lastScroll? console.log('up') : console.log('down')
+    lastScroll = st
+  })
 }
 
 // Navbar Link Events Show Views depending on target
-const linksHandler = function (event) {
-  showView($(this).attr('id'))
+const linksHandler = function () {
+  pickView(this)
   // FadeOut Resolved.
-    .then(pickView)
+    .then(activateLink)
+    .then(showView)
     .catch(()=> {console.log('error')})
 }
 
-// ShowView Returns TargetView on resolving fadeOut content and Background
-const showView = function (target) {
+// pickView Returns TargetView on resolving fadeOut content and Background
+const pickView = function (target) {
   return new Promise((resolve, reject) => {
     if ($('.content').hide()) {
       resolve(target)
@@ -22,19 +48,41 @@ const showView = function (target) {
       reject(console.log('error'))
     }
   })
-
-
 }
 
-const pickView = function (target) {
-  const views = {
-    about: about()
-  }
-
-  $('.content').html(views[target])
+// Changes content html to view and FadesIn
+const showView = function (target) {
+  const view = $(target).attr('id')
+  $('.content').html(views[view])
   $('.content').fadeIn()
-  // $('.content').show()
-  // $('.content').show()
+}
+
+// Link Events
+const activateLink = function (target) {
+  $('li').removeClass('active')
+  $(target).addClass('active')
+  return target
+}
+
+//
+
+const keyActions = function () {
+  const upDown = {
+    ArrowDown: $('.down'),
+    ArrowUp: $('.up')
+  }
+  console.log(upDown[event.key])
+  scrollLinks.call(upDown[event.key])
+}
+
+// Find The correct link based on Arrow Action
+const scrollLinks = function () {
+  let i = $('.active').index()
+  const arrow = $(this).children().first().attr('class')
+  const links = $('.nav').children('.navlink')
+  arrow === 'arrow-down' ? i++ : i--
+  if (i > links.length) { i = 1 } else if (i === 0) { i = links.length }
+  linksHandler.call(links[i - 1])
 }
 
 module.exports = {
