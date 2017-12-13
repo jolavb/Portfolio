@@ -36,6 +36,7 @@ const linksHandler = function () {
 const pickView = function (target) {
   return new Promise((resolve, reject) => {
     if ($('.content').hide()) {
+      $('.content').html('')
       resolve(target)
     } else {
       reject(console.log('error'))
