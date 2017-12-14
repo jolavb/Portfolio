@@ -90,6 +90,14 @@ html, body {
 
 // Page styles
 
+.proj-container {
+  height: inherit;
+  > .row {
+    height: inherit;
+
+  }
+}
+
 .overlay-wrap {
   margin-right: 20px;
   height: 100%;
@@ -103,6 +111,9 @@ html, body {
   width: 325px;
   margin: 10px;
 }
+
+// Portfolio
+
 
 // Spinner
 .loader {

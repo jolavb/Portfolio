@@ -5,7 +5,7 @@ const about = require('./../templates/about.handlebars')
 const projects = require('./../templates/projects.handlebars')
 const experiance = require('./../templates/experiance.handlebars')
 const timeline = require('./../templates/timeline.handlebars')
-
+const pageEvents = require('./pageEvents')
 // Consolidate Handlebars Views
 const views = {
   home: home({view: true}),
@@ -23,12 +23,19 @@ const loadClickEvents = function () {
   $('.container-fluid').keyup(keyActions)
 }
 
+// loads inner page click events on page render
+const loadPageClickEvents = function (view) {
+  $('.page-tab').on('click', pageEvents.linksHandler)
+  return view
+}
+
 // Navbar Link Events Show Views depending on target
 const linksHandler = function () {
   pickView(this)
   // FadeOut Resolved.
     .then(activateLink)
     .then(showView)
+    .then(loadPageClickEvents)
     .catch(()=> {console.log('error')})
 }
 
@@ -44,22 +51,22 @@ const pickView = function (target) {
   })
 }
 
-// Changes content html to view and FadesIn
+// Changes content html to view and FadesIn, returns view
 const showView = function (target) {
   const view = $(target).attr('id')
   $('.content').html(views[view])
   $('.content').fadeIn()
+  return view
 }
 
-// Link Events
+// Link Events- removes active class from all li's adds active to target
 const activateLink = function (target) {
   $('li').removeClass('active')
   $(target).addClass('active')
   return target
 }
 
-//
-
+// Up Down Key Actions
 const keyActions = function () {
   const upDown = {
     ArrowDown: $('.down'),
