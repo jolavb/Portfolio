@@ -6,6 +6,10 @@ const projects = require('./../templates/projects.handlebars')
 const experiance = require('./../templates/experiance.handlebars')
 const timeline = require('./../templates/timeline.handlebars')
 
+// Dependecies
+const pageEvents = require('./pageEvents')
+
+
 // Consolidate Handlebars Views
 const views = {
   home: home({view: true}),
@@ -35,6 +39,7 @@ const linksHandler = function () {
   // FadeOut Resolved.
     .then(activateLink)
     .then(showView)
+    .then(pageEvents.loadTabEvents)
     .catch(console.log)
 }
 
