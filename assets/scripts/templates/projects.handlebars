@@ -3,79 +3,229 @@
   <legend><h1> Projects </h1></legend>
     <div class='row proj-row'>
       <div class='col col-xs-12'>
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="page-tab active"><a href="#">Intro</a></li>
-          <li role="presentation" class="page-tab" ><a href="#">Grocery-Basket</a></li>
-          <li role="presentation" class="page-tab" ><a href="#">Tic-Tac-Doh!</a></li>
-          <li role="presentation" class="page-tab" ><a href="#">JEB! File Hosting</a></li>
-        </ul>
-        <div class='page-content'></div>
-      </div>
-    </div>
-</div>
-</div>
+        <!-- Tab Navs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="page-tab active">
+            <a aria-controls="Intro" role="tab" data-toggle="tab" href="#Intro">Intro</a>
+          </li>
 
-<!--
-<div class= 'info-wrap' display: 'none'>
-  <div class='col-xs-4'>
-      <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Grocery-Basket</h3>
-      </div>
-        <div class='info-wrap'>
-        <div class="panel-body">
-          <img class = 'img img-responsive panel-img' src='public/grocery.png'>
+          <li role="presentation" class="page-tab" >
+            <a aria-controls="Grocery-Basket" role="tab" data-toggle="tab" href="#Grocery-Basket">Grocery Basket</a>
+          </li>
+
+          <li role="presentation" class="page-tab">
+            <a aria-controls="OpenClinic" role="tab" data-toggle="tab" href="#OpenClinic">Open Clinic</a>
+          </li>
+
+          <li role="presentation" class="page-tab" >
+            <a aria-controls="Tic-Tac" role="tab" data-toggle="tab" href="#Tic-Tac">Tic Tac Doh!</a>
+          </li>
+          <li role="presentation" class="page-tab" >
+            <a aria-controls="JEB" role="tab" data-toggle="tab" href="#JEB">JEB File Hosting</a>
+          </li>
+        </ul>
+
+              <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="Intro">
+
+            <div class= 'well well-lg'>
+            <legend> <h3>Projects Overview </h3> </legend>
+            <p> &nbsp The following projects were developed over the course of a 3 month full time
+            Web Development Immersive program with General Assembly. The Web Development
+            Immersive Program primarily focuses on programming fundamentals, front and back
+            end web development, version control via github, and team collaboration.</p>
+
+            <p>   For each of the projects I combined my previous python, webscraping, and data
+            handeling experiance (where applicable) to produce interactive sites with
+            pre-populated database content.</p>
+
+            <p>   Transforming large datasets into interactive and consumable content was so
+            exiciting to me that in addition to the 4 'required' projects I dug into
+            D3.js to create a few interactive Data Visualizations which may be found under
+            the 'visualizations' tab. </p>
+
+           <div class= "row projects-overview">
+              <div class='col-xs-3'>
+                <h4>Grocery Basket</h4>
+                <a aria-controls="Grocery-Basket" data-toggle="tab" href="#Grocery-Basket" class="thumbnail">
+                  <img src="public/grocery.png" alt="Grocery-Basket.png">
+                </a>
+              </div>
+              <div class='col-xs-3'>
+                <h4>Open Clinic</h4>
+                <a  aria-controls="OpenClinic" role="tab" data-toggle="tab" href="#OpenClinic"class="thumbnail">
+                  <img src="public/open-clinic-clean.png" alt="open-clinic-clean.png">
+                </a>
+              </div>
+              <div class='col-xs-3'>
+                <h4>Tic Tac Doh!</h4>
+                <a aria-controls="Tic-Tac" role="tab" data-toggle="tab" href="#Tic-Tac"class="thumbnail">
+                  <img src="public/doh.png" alt="doh.png">
+                </a>
+              </div>
+              <div class='col-xs-3'>
+                <h4>Jeb File Hosting</h4>
+                <a aria-controls="JEB" role="tab" data-toggle="tab" href="#JEB" class="thumbnail">
+                  <img src="public/jeb-clean.png" alt="jeb-clean.png">
+                </a>
+              </div>
+            </div>
+           </div>
+
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="OpenClinic">
+            <div class= 'row well well-lg'>
+              <div class= 'col-xs-5'>
+                <img class= 'img img-responsive' src='public/openClinic.png'>
+              </div>
+              <div class= 'panel-intro panel-section col-xs-7'>
+                <h1> Open Clinic </h1>
+                <p>Search thousands of clinical trial records by phase. </br> Powered by
+                  the Open Clinic API.
+                </p>
+                <a target="_blank" href='https://jolavb.github.io/open-clinic-client/#/studies'><button class='search btn btn-success'> Search Studies </button></a>
+              </div>
+              <div class= 'col-xs-12 panel-section'>
+                <legend> <h3> Open Clinic Client </h3></legend>
+                <p>This Ember client application queries the open-clinic-api to view,
+                   search and add comments to any public clinical trial submitted to
+                   clinicalTrials.gov as of January 1st, 2017 served by the api.
+                   Users may sign in to search clincial trials by phase, view trial
+                   information as well as comment on a specific trial.</p>
+                <h4 class='dev'> Developing the Client</h4>
+                <p>Following the pattern I established to tackle the many
+                  tables and relationships included in the back-end API,
+                  I added models to the ember framework one at a time.
+                  Once a model had been added, I followed the Data Down,
+                  Actions Up approach to fetch and pass model data down
+                  to the correct componenet. Once I was satisfied with the
+                  rendering and actions required for one model, I moved onto
+                  related models, and finally to the search params to filter studies
+                  by phase.</p>
+
+                  <a href= 'https://github.com/jolavb/open-clinic-client'>
+                    <img src='public/github.ico' class='img img-responsive github'>
+                    <span>Client Repository</span>
+                  </a>
+
+              </div>
+              <div class= 'col-xs-7 panel-section'>
+                <legend> <h3> Open Clinic API </h3></legend>
+                <p>This Rails API serves public clinical trial data to the Open-Clinic-API
+                  from a postgres database containing a complete record of clinical trials
+                  submitted to clinicalTrials.gov as of January 1st, 2017. The underlying database
+                  was originally cloned from <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> and extended to
+                  include user authentication and user-owned resources.</p>
+
+                  <h4 class='dev'> Developing the API</h4>
+                  <p>I intentionally bit off more than I could chew by cloning a large existing database from
+                    <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> with
+                    over 40 tabls and relationships. I have
+                    taken small steps and added relationships, models,
+                    routes and Controllers for 1 table at a time. I began with the
+                    primary table, which all others are related; the studies table.
+                    One each route was performing as anticipated, with the correct information
+                    serialized, I progressed to the next table.</p>
+
+                    <a href= 'https://github.com/jolavb/open-clinic-api'>
+                      <img src='public/github.ico' class='img img-responsive github'>
+                      <span>View API Repository</span>
+                    </a>
+
+              </div>
+              <div class= 'panel-image col-xs-5'>
+                <h4> Entity Relationships </h4>
+                <a target="_blank"href="https://imgur.com/pAfJgNR"><img class='img img-responsive' src="https://i.imgur.com/pAfJgNR.png" title="source: imgur.com" /></a>
+              </div>
+            </div>
+
+
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="Grocery-Basket">
+            <h3> Grocery-Basket Overview </h3>
+              <p>I have developed this Single Page Application out of my own frustration at reliably acessing and aggregating
+            on sale grocery items into recipies. The goal of Grocery-Basket is to allow
+            the collection and aggregation of on-sale grocery items from the greater boston area into cheap and delicious recipies. Food item and store html
+            data are collected weekly and stored in a postgres db running on heroku.</p></br>
+
+              <p>This first version of Grocery-Basket allows a user to select a grocery store to display and add on-sale items to thier cart. Cart
+            items may be updated or deleted and a user may use the cart as a reference while shopping at thier local grocery store.<p>
+            <img class = 'img img-responsive panel-img' src='public/grocery.png'>
+
+            <a href='https://jolavb.github.io/Grocery-Basket//'> Web Site </a></br>
+            <a href='https://grocery-basket.herokuapp.com/'> BackEnd API Link</a>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="Tic-Tac">
+            <h4>Tic Tac Doh</h4>
+            <p>This simpsons themed tic tac toe game allows users to compete against each
+            other utilizing a third paty api to store and calculate player stats.</p>
+
+            <img class = 'img img-responsive panel-img' src='public/doh.png'>
+            <a href='https://jolavb.github.io/tic-tac-doe/'>Website</a>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="JEB">
+            <h4>JEB File Hosting</h4>
+            <h3>OverView</h3>
+
+            <p> JEB File Hosting is the result of our 3rd group project developed for General
+              Assembly's Web Immersive Program. The site allows the upload, storage, and editing
+              of any file type supported by AWS's S# service. Upload details and user information are stored in
+              Mongo DB via an node/express API app hosted on Heroku. This backend communicates with AWS in order
+              to store and edit the details of the uploaded files. </p>
+
+            <h3>Planning</h3>
+
+            <legend> User Stories</legend>
+            <ul>
+              <li>User can create an account.</li>
+              <li>User can log in, change password, log out.</li>
+              <li>User can view everyone's file.</li>
+              <li>User can view only their own files.</li>
+              <li>User can edit their picture properties</li>
+              <li>User can log Out</li>
+            </ul>
+
+            <p>As a team, we work closely with each other to brainstorm and work on features. We break down the day's work by doing SCRUM every morning and
+            ending the day with a retro meeting. We started with the backend setting up the api. Then we use scripts to test if each CRUD action is working.
+            Once that was completed we worked on the front actions and connecting the actions together with the api. Lastly we worked on styling the site and making sure we meet MVP requirements.</p>
+
+            <legend> ERD </legend>
+            <img src='https://drive.google.com/file/d/1ARrIIprr5KvOdfFUTPx-DWXzE4ReRXNJ/view?usp=sharing'></img>
+
+            <legend> Wire Frames </legend>
+            <img src="https://i.imgur.com/D6VZ5xc.jpg" title="Wire Frame"/>
+
+
+            <h3>Links</h3>
+            <a href= "https://gitjeb.github.io/front/">Site Link</a>
+            <a href= "https://github.com/GitJeb/bac">JEB API Repo</a>
+            <a href= "https://dry-wildwood-27227.herokuapp.com">JEB API End Point</a>
+
+            <h3>Technologies Used</h3>
+
+            <ul>
+              <li>HTML</li>
+              <li>CSS3</li>
+              <li>SCSS</li>
+              <li>jQUERY</li>
+              <li>JavaScript</li>
+              <li>GIT/GITHUB</li>
+              <li>Handlebars</li>
+              <li>BootStrap</li>
+            </ul>
+
+
+
+            <h3>Future Iterations</h3>
+
+            <p>On next update we plan to add more user fields for files.
+            Users should be able to add location tag, and pdf files.
+            Report users for malicious or NSFW files.
+            </p>
+          </div>
         </div>
-        </div>
-    </div>
-  </div>
-  <div class='col-xs-4'>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Tic Tac Doh!</h3>
-      </div>
-      <div class="panel-body">
-        <img class = 'img img-responsive panel-img' src='public/doh.png'>
       </div>
     </div>
-  </div>
-  <div class='col-xs-4'>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-      </div>
-      <div class="panel-body">
-        Panel content
-      </div>
-    </div>
-  </div>
-  <div class='col-xs-4'>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-      </div>
-      <div class="panel-body">
-        Panel content
-      </div>
-    </div>
-  </div>
-  <div class='col-xs-4'>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-      </div>
-      <div class="panel-body">
-        Panel content
-      </div>
-    </div>
-  </div>
-  <div class='col-xs-4'>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-      </div>
-      <div class="panel-body">
-        Panel content
-      </div>
-    </div>
-  </div> -->
+</div>
+</div>

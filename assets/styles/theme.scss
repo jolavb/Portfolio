@@ -1,5 +1,12 @@
 
 // General
+legend {
+  border-bottom: 1px solid $blue;
+}
+
+p {
+    text-indent: 10px;
+}
 
 h1 {
   font-family: 'Libre Baskerville', serif;
@@ -54,7 +61,6 @@ html, body {
   padding-top: 20px;
   padding-bottom: 20px;
   width: 80%;
-  // background: #02020257;
   .nav {
     position: relative;
     text-align: center
@@ -88,8 +94,49 @@ html, body {
 }
 
 
+// Icons
+
+.dev {
+  @include elegant-icon('icon_tools');
+}
+
+.search {
+  @include elegant-icon('icon_search','after');
+}
+
+.github {
+  width: 40px;
+  display: inline;
+}
+
+// Panels
+
+.panel-section {
+  padding-top: 20px;
+  > h4 {
+    padding-top: 20px;
+  }
+}
+
+// Tabs
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #fff;
+  background-color: $blue;
+  border: 1px solid #888888;
+}
+
+.projects-overview {
+  > .col-xs-3 {
+    text-align: center;
+  }
+}
+
+
 // Page styles
 
+.panel-image {
+  text-align: center;
+}
 .proj-container {
   height: inherit;
   > .row {
