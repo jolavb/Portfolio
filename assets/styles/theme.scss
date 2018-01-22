@@ -87,6 +87,18 @@ html, body {
 
 }
 
+// Tabs
+
+.nav-tabs > li.active  {
+  > a {
+    color: $white;
+    background-color: $blue;
+  }
+  > a:hover {
+    color: $white;
+    background-color: $blue;
+  }
+}
 
 // Page styles
 
