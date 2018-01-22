@@ -6,7 +6,7 @@ const jeb = require('./../templates/innerpage/jeb.handlebars')
 
 
 const views = {
-  Intro: intro(),
+  'Intro': intro(),
   'Grocery-Basket': grocery(),
   'Tic-Tac-Doh!': tic_tac(),
   'JEB! File Hosting': jeb()

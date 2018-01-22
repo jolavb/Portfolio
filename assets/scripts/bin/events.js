@@ -36,6 +36,13 @@ const linksHandler = function () {
     .then(activateLink)
     .then(showView)
     .then(loadPageClickEvents)
+    // If Projects Link is clicked, load intro page
+    .then(function (view) {
+      if (view === 'projects') {
+        pageEvents.linksHandler.call($('#Intro'))
+      }
+    })
+
     .catch(()=> {console.log('error')})
 }
 
