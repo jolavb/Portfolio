@@ -3,13 +3,33 @@
   <legend><h1> Projects </h1></legend>
     <div class='row proj-row'>
       <div class='col col-xs-12'>
-        <ul class="nav nav-tabs">
-          <li role="presentation" id= 'Intro' class="page-tab active"><a href="#">Intro</a></li>
-          <li role="presentation" class="page-tab" ><a href="#">Grocery-Basket</a></li>
-          <li role="presentation" class="page-tab" ><a href="#">Tic-Tac-Doh!</a></li>
-          <li role="presentation" class="page-tab" ><a href="#">JEB! File Hosting</a></li>
+
+        <!-- Tab Navs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="page-tab active">
+            <a aria-controls="Intro" role="tab" data-toggle="tab" href="#Intro">Intro</a>
+          </li>
+
+          <li role="presentation" class="page-tab" >
+            <a aria-controls="Grocery-Basket" role="tab" data-toggle="tab" href="#Grocery-Basket">Grocery-Basket</a>
+          </li>
+          <li role="presentation" class="page-tab" >
+            <a aria-controls="Tic-Tac" role="tab" data-toggle="tab" href="#Tic-Tac">Tic-Tac-Doh!</a>
+          </li>
+          <li role="presentation" class="page-tab" >
+            <a aria-controls="JEB" role="tab" data-toggle="tab" href="#JEB">JEB! File Hosting</a>
+          </li>
         </ul>
-        <div class='page-content'></div>
+
+              <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="Intro">Intro</div>
+          <div role="tabpanel" class="tab-pane fade" id="Grocery-Basket">Grocery</div>
+          <div role="tabpanel" class="tab-pane fade" id="Tic-Tac">Tic-Tac</div>
+          <div role="tabpanel" class="tab-pane fade" id="JEB">JEB</div>
+        </div>
+
+        <!-- <div class='page-content'></div> -->
       </div>
     </div>
 </div>

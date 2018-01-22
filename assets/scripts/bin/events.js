@@ -5,7 +5,7 @@ const about = require('./../templates/about.handlebars')
 const projects = require('./../templates/projects.handlebars')
 const experiance = require('./../templates/experiance.handlebars')
 const timeline = require('./../templates/timeline.handlebars')
-const pageEvents = require('./pageEvents')
+
 // Consolidate Handlebars Views
 const views = {
   home: home({view: true}),
@@ -24,10 +24,10 @@ const loadClickEvents = function () {
 }
 
 // loads inner page click events on page render
-const loadPageClickEvents = function (view) {
-  $('.page-tab').on('click', pageEvents.linksHandler)
-  return view
-}
+// const loadPageClickEvents = function (view) {
+//   $('.page-tab').on('click', pageEvents.linksHandler)
+//   return view
+// }
 
 // Navbar Link Events Show Views depending on target
 const linksHandler = function () {
@@ -35,15 +35,7 @@ const linksHandler = function () {
   // FadeOut Resolved.
     .then(activateLink)
     .then(showView)
-    .then(loadPageClickEvents)
-    // If Projects Link is clicked, load intro page
-    .then(function (view) {
-      if (view === 'projects') {
-        pageEvents.linksHandler.call($('#Intro'))
-      }
-    })
-
-    .catch(()=> {console.log('error')})
+    .catch(console.log)
 }
 
 // pickView Returns TargetView on resolving fadeOut content and Background
