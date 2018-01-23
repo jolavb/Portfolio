@@ -1,340 +1,36 @@
+
+// HandleBars templates
+const WineHbs = require('./../templates/innerpage/wine.hbs')
+const CrimeHbs = require('./../templates/innerpage/crime.hbs')
+const IrisHbs = require('./../templates/innerpage/iris.hbs')
+
 const D3 = require('./d3.min.js')
 const getFormFields = require('./../../../lib/get-form-fields')
 
-// Using d3 to select and style dom element
-
-const colorElement = function () {
-  D3.select('.D3-example-1').style('color', 'green')
-}
-
-const deletesvg = function () {
-  D3.select('.deleteme').remove()
-}
-
-const datafunction = function () {
-  const data = [1,2,3,4,5]
-  const paragraph = D3.select('.p-pops')
-    .selectAll('p')
-    .data(data)
-    .enter()
-    .append('p')
-    .text(function (d) {
-      return d + ' '
-    })
-}
-
-const setd3Event = function () {
-  D3.selectAll('.eventlisten')
-    .on('mouseover', function () {
-      D3.select(this)
-        .style('background-color', 'orange')
-
-      // Get current event info
-      console.log(D3.event)
-
-      // Get x & y co-ordinates
-      console.log(D3.mouse(this))
-    })
-    .on('mouseout', function () {
-      D3.select(this)
-        .style('background-color', 'steelblue')
-    })
-}
-
-const transitions = function () {
-  const svg = D3.select('.animation')
-    .html('')
-    .append('svg')
-    .attr('width', 300)
-    .attr('height', 200)
-
-  const bar1 = svg.append('rect')
-    .attr('fill', 'white')
-    .attr('x', 0)
-    .attr('y', 0)
-    .attr('height', 0)
-    .attr('width', 20)
-
-  const bar2 = svg.append('rect')
-    .attr('fill', 'red')
-    .attr('x', 0)
-    .attr('y', 0)
-    .attr('height', 0)
-    .attr('width', 20)
-  update()
-
-  function update () {
-    bar1.transition()
-      .ease(D3.easeLinear)
-      .duration(1000)
-      .attr('x', 100)
-      .attr('height', 100)
-  }
-  bar2.transition()
-    .ease(D3.easeLinear)
-    .duration(1000)
-    .delay(1000)
-    .attr('x', 150)
-    .attr('height', 100)
-}
-
-const loadedData2 = function () {
-  // d3.csv parses as string by default, can specify type function call back to
-  // overwite types
-  D3.csv('./../../data/wine.csv', type, render)
-
-  const svg = D3.select('.loaded-data2').append('svg')
-    .attr('width', 250)
-    .attr('height', 250)
-
-  function type (d) {
-    // overright string with parsed float
-    // can also to parseFloat() same as "+"notation
-    d.price = +d.price
-    d.country = +d.country.length
-    return d
-  }
-
-  function render (data) {
-    // Bind Data
-    const rects = svg.selectAll('circle').data(data)
-    rects.enter().append('circle')
-      .attr('r', 10)
-      .merge(rects)
-      .attr('cx', (d) => d.price)
-      .attr('cy', (d) => d.country)
-    rects.exit().remove()
-  }
-}
-
-const colors = function () {
-  const svg = D3.select('.loaded-data2').append('svg')
-    .attr('width', 250)
-    .attr('height', 250)
-
-  const scale = D3.scaleLinear()
-    .domain([1, 10])
-    .range([0, 200])
-
-  function render (data, color) {
-
-    // Bind Data
-    const rects = svg.selectAll('rect').data(data)
-    // enter doesn't update data, only changes elements that weren't there before
-    // to update previously added rects,
-
-    // Enter
-    rects.enter().append('rect')
-
-      // Update - Use Merge to Update all selected elements on second pass
-      .merge(rects)
-      .attr('x', scale)
-      .attr('y', 50)
-      .attr('width', 20)
-      .attr('height', 20)
-      .attr('fill', color)
-
-    // Exit - removes previously created elements
-    rects.exit().remove()
-  }
-
-  setTimeout(function () { render([1, 2, 3], 'red') }, 1000)
-  setTimeout(function () { render([1,2,3,4,5], 'blue') }, 2000)
-  setTimeout(function () { render([1,2], 'yellow') }, 3000)
-
-}
-
-const examples = function () {
-  // Scale transforms data space into pixel space
-  // new linear scale instance
-  const scaleLinear = D3.scaleLinear()
-  // set min and max of domain which is
-    .domain([0, 1]) // Setter function for Data space, returns scale
-    .range([0, 100]) // Setter function for Pixel space, returns scale
-  console.log(scaleLinear(0.5)) // prints 50
-
-  // New ordinal scale instace. Ordinal = discrete values
-  const scaleOrd = D3.scaleOrdinal()
-    .domain(['a', 'b', 'c'])
-    .range(['Apple', 'Bannana', 'Coconut'])
-  console.log(scaleOrd('b')) // prints Apple
-
-  // New ordinal scale instace.
-  const scalePoint = D3.scalePoint()
-    .domain(['a', 'b', 'c', 'd'])
-    .range([0, 100])
-  console.log(scalePoint('b')) // prints 33.3333333333
-
-  // New ordinal scale instace with rounded range
-  const scalePointRound = D3.scalePoint()
-    .domain(['a', 'b', 'c', 'd'])
-    .rangeRound([0, 100])
-  console.log(scalePointRound('b')) // prints 34
-
-
-  // SVGs with rectangle based on Data
-
-  const data = [1,2,3,4,5,6,7,8,9,10]
-
-  const svg = D3.select('.loaded-data2').append('svg')
-    .attr('width', 250)
-    .attr('height', 250)
-
-  const scale = D3.scaleLinear()
-    .domain([1, 10])
-    .range([0, 200])
-
-  svg.selectAll('rect')
-    .data(data)
-    .enter().append('rect')
-    // x coords of rects are set based on scale
-    .attr('x', function (d) { return scale(d) })
-    .attr('y', 50)
-    .attr('width', 20)
-    .attr('height', 20)
-}
-
-const loadedData = function () {
-  $('.wine').html('')
-
-  const svg = D3.select('.wine')
-
-  const margin = 200
-  const width = svg.attr('width') - margin
-  const height = svg.attr('height') - margin
-
-  const xScale = D3.scaleBand().range([0, width]).padding(0.4) // set pixel range
-  const yScale = D3.scaleLinear().range([height, 0])
-  const g = svg.append('g').attr('transform', 'translate(' + 100 + ',' + 100 + ')')
-
-  D3.csv('./../../data/wine.csv', render)
-
-  function render (data) {
-    xScale.domain(data.map(function (d) { return d.country }))
-    yScale.domain([0, D3.max(data, function (d) { return d.price })])
-
-    g.append('g')
-      .attr('class', 'x-axis')
-      .attr('transform', 'translate(0,' + height + ')')
-      .call(D3.axisBottom(xScale))
-      .selectAll('text')
-      .attr('dx', '-.8em')
-      .attr('dy', '-.8em')
-      .style('text-anchor', 'end')
-      .attr('transform', function (d) {
-        return 'rotate(-90)'
-      })
-
-    g.append('g')
-      .call(D3.axisLeft(yScale).tickFormat(function (d) {
-        return '$' + d
-      }).ticks(10))
-      .append('text')
-      .attr('y', 6)
-      .attr('dy', '0.71em')
-      .attr('text-anchor', 'end')
-      .text('value')
-
-    g.selectAll('.bar')
-      .data(data)
-      .enter().append('rect')
-      .attr('class', 'bar')
-      .attr('x', function (d) { return xScale(d.country) })
-      .attr('width', xScale.bandwidth())
-      .attr('y', function (d) {
-        return yScale(0)
-      })
-
-      .attr('height', 0)
-      .transition()
-      .ease(D3.easeElastic)
-      .duration(1500)
-      .attr('y', function (d) { return yScale(d.price) })
-      .attr('height', function (d) { return height - yScale(d.price) })
-
-    const sortOrder = ['Ascending', 'Descending']
-    const options = D3.select('.loaded-data').append('select')
-      .on('change', orderBy)
-      .selectAll('option')
-      .data(sortOrder)
-      .enter().append('option')
-      .text(function (d) { return d })
-      .attr('value', function (d) { return d })
-
-    function orderBy () {
-      const bars = svg.selectAll('.bar')
-      switch (event.target.value) {
-        case 'Ascending':
-          let x0 = xScale.domain(data.sort(function (a,b) { return a.price - b.price })
-            .map(function (d) { return d.country }))
-          bars.sort(function (a, b) { return x0(a.country) - x0(b.country) })
-          bars.transition()
-            .attr('x', function (d) { return x0(d.country) })
-
-          break
-        case 'Descending':
-          x0 = xScale.domain(data.sort(function (a,b) { return b.price - a.price })
-            .map(function (d) { return d.country }))
-          bars.sort(function (a, b) { return x0(a.country) - x0(b.country) })
-          bars.transition()
-            .attr('x', function (d) { return x0(d.country) })
-
-
-          break
-        default:
-          console.log('hello')
-      }
-    }
-
-  }
-
-  // // sort options
-  // const sortOrder = ['Ascending', 'Descending']
-  // const options = D3.select('.loaded-data').append('select')
-  //   .on('change', orderBy)
-  //   .selectAll('option')
-  //   .data(sortOrder)
-  //   .enter().append('option')
-  //   .text(function (d) { return d })
-  //   .attr('value', function (d) { return d })
-
-  // function orderBy () {
-  //   const bars = D3.selectAll('.bar')
-  //   switch (event.target.value) {
-  //     case 'Ascending':
-  //       // let  asc = bars.sort((a,b) => b.price - a.price)
-  //       console.log(sortAsc(bars))
-  //       // xScale.domain()
-  //
-  //       // bars.transition()
-  //       //   .attr('x', 0)
-  //       break
-  //     case 'Descending':
-  //       console.log(bars)
-  //       break
-  //     default:
-  //       console.log('hello')
-  //   }
-  // }
-  //
-  //
-  //
-  // function sortAsc (data) {
-  //   return data.sort(function (a,b) {
-  //     return a.price - b.price
-  //   })
-  // }
+const removeActive = function() {
+  $('.data-navpils li').removeClass('active')
 }
 
 const loadWineData = function () {
-  $('.wine').html('')
+  // clear content
+  $('.loaded-data').html(WineHbs())
+  removeActive()
+  $('.wine-data').addClass('active')
+  D3.select('.crime-info svg').remove()
   D3.select('.wine-order').remove()
 
-  const svg = D3.select('.wine')
-
+  // Dimensions
+  const outerWidth = 1200
+  const outerHeight = 500
   const margin = 200
-  const width = svg.attr('width') - margin
-  const height = svg.attr('height') - margin
+  const width = outerWidth - margin
+  const height = outerHeight - margin
+
+  // const svg = D3.select('.wine')
+  const svg = D3.select('.wine-info').append('svg')
+    .attr('width', outerWidth)
+    .attr('height', outerHeight)
+
   const g = svg.append('g').attr('transform', 'translate(' + 100 + ',' + 100 + ')')
 
   D3.csv('public/wine.csv', render)
@@ -381,7 +77,6 @@ const loadWineData = function () {
           .attr('y', yAxis(d.price))
           .text('$' + parseFloat(d.price).toFixed(2))
           .attr('transform', 'rotate(90 ' + xAxis(d.country) + ' ' + yAxis(d.price) + ')')
-
       })
       .on('mouseout', function (d) {
         D3.select('.price-show')
@@ -401,8 +96,9 @@ const loadWineData = function () {
       .attr('height', function (d) { return height - yAxis(d.price) })
 
     const sortOrder = ['Ascending', 'Descending']
-    const options = D3.select('.loaded-data').append('select')
-      .attr('class', 'wine-order')
+
+    const options = D3.select('.wine-info').append('select')
+      .attr('class', 'wine-order form-control')
       .on('change', orderBy)
       .selectAll('option')
       .data(sortOrder)
@@ -448,17 +144,19 @@ const loadWineData = function () {
     }
 
   }
-
-
 }
+
 const Iris = function () {
+  removeActive()
+  $('.iris-data').addClass('active')
+  $('.loaded-data').html(IrisHbs())
 
   const formData = $('form').serializeArray()
 
   // clear div
   D3.select('.loaded-data3 svg').remove()
   // Load Data and Call Render
-  D3.csv('./../../data/Iris.csv', type, render)
+  D3.csv('public/Iris.csv', type, render)
 
   const outerWidth = 1000
   const outerHeight = 700
@@ -480,7 +178,6 @@ const Iris = function () {
   // group
   const g = svg.append('g')
     .attr('transform', 'translate( 30, 30)')
-
 
   // converts strings to numbers
   function type (d) {
@@ -505,8 +202,6 @@ const Iris = function () {
       .call(D3.axisBottom(xScale))
       .attr('transform', 'translate(0,' + (outerHeight - 20) + ')')
       .selectAll('text')
-      // .attr('x', '-20')
-      // .attr('y', '-20')
       .style('text-anchor', 'end')
 
     const circles = g.selectAll('circle').data(data)
@@ -545,10 +240,19 @@ const Iris = function () {
       })
     $('.iris-info').fadeIn(200)
   }
+// Add Change Event After Template Load
+  $('select').on('change', Iris)
 }
 
 const Crime = function () {
-  D3.csv('./../../data/crime1.csv', type, render)
+  // Clear Content
+  $('.loaded-data').html(CrimeHbs())
+  // Active Link
+  removeActive()
+  $('.crime-data').addClass('active')
+
+  D3.csv('public/crime1.csv', type, render)
+
   // general dimenions
   const outerWidth = 1000
   const outerHeight = 1000
@@ -568,7 +272,7 @@ const Crime = function () {
 
 
   // svg
-  const svg = D3.select('.loaded-data4').append('svg')
+  const svg = D3.select('.crime-info').append('svg')
     .attr('width', outerWidth)
     .attr('height', outerHeight)
 
@@ -597,7 +301,7 @@ const Crime = function () {
   }
 
   function unique (data, colors) {
-    const types = D3.select('.loaded-data4').append('div')
+    const types = D3.select('.crime-info').append('div')
       .attr('class', 'types')
 
     types.selectAll('p')
@@ -623,18 +327,7 @@ const Crime = function () {
 }
 
 
-
-
 module.exports = {
-  colorElement,
-  deletesvg,
-  datafunction,
-  setd3Event,
-  transitions,
-  loadedData,
-  loadedData2,
-  examples,
-  colors,
   Iris,
   Crime,
   loadWineData
