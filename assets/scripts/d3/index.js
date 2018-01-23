@@ -1,13 +1,22 @@
 
+// HandleBars templates
+const WineHbs = require('./../templates/innerpage/wine.hbs')
+const CrimeHbs = require('./../templates/innerpage/crime.hbs')
 const IrisHbs = require('./../templates/innerpage/iris.hbs')
+
 const D3 = require('./d3.min.js')
 const getFormFields = require('./../../../lib/get-form-fields')
-const loadWineData = function () {
 
+const removeActive = function() {
+  $('.data-navpils li').removeClass('active')
+}
+
+const loadWineData = function () {
   // clear content
-  $('.loaded-data').html('')
+  $('.loaded-data').html(WineHbs())
+  removeActive()
   $('.wine-data').addClass('active')
-  D3.select('.loaded-data svg').remove()
+  D3.select('.crime-info svg').remove()
   D3.select('.wine-order').remove()
 
   // Dimensions
@@ -18,7 +27,7 @@ const loadWineData = function () {
   const height = outerHeight - margin
 
   // const svg = D3.select('.wine')
-  const svg = D3.select('.loaded-data').append('svg')
+  const svg = D3.select('.wine-info').append('svg')
     .attr('width', outerWidth)
     .attr('height', outerHeight)
 
@@ -88,8 +97,8 @@ const loadWineData = function () {
 
     const sortOrder = ['Ascending', 'Descending']
 
-    const options = D3.select('.loaded-data').append('select')
-      .attr('class', 'wine-order')
+    const options = D3.select('.wine-info').append('select')
+      .attr('class', 'wine-order form-control')
       .on('change', orderBy)
       .selectAll('option')
       .data(sortOrder)
@@ -137,11 +146,8 @@ const loadWineData = function () {
   }
 }
 
-const test = function () {
-  $('.loaded-data').html(IrisHbs())
-}
-
 const Iris = function () {
+  removeActive()
   $('.iris-data').addClass('active')
   $('.loaded-data').html(IrisHbs())
 
@@ -196,8 +202,6 @@ const Iris = function () {
       .call(D3.axisBottom(xScale))
       .attr('transform', 'translate(0,' + (outerHeight - 20) + ')')
       .selectAll('text')
-      // .attr('x', '-20')
-      // .attr('y', '-20')
       .style('text-anchor', 'end')
 
     const circles = g.selectAll('circle').data(data)
@@ -241,7 +245,14 @@ const Iris = function () {
 }
 
 const Crime = function () {
-  D3.csv('./../../data/crime1.csv', type, render)
+  // Clear Content
+  $('.loaded-data').html(CrimeHbs())
+  // Active Link
+  removeActive()
+  $('.crime-data').addClass('active')
+
+  D3.csv('public/crime1.csv', type, render)
+
   // general dimenions
   const outerWidth = 1000
   const outerHeight = 1000
@@ -261,7 +272,7 @@ const Crime = function () {
 
 
   // svg
-  const svg = D3.select('.loaded-data4').append('svg')
+  const svg = D3.select('.crime-info').append('svg')
     .attr('width', outerWidth)
     .attr('height', outerHeight)
 
@@ -290,7 +301,7 @@ const Crime = function () {
   }
 
   function unique (data, colors) {
-    const types = D3.select('.loaded-data4').append('div')
+    const types = D3.select('.crime-info').append('div')
       .attr('class', 'types')
 
     types.selectAll('p')
@@ -315,8 +326,8 @@ const Crime = function () {
   }
 }
 
+
 module.exports = {
-  test,
   Iris,
   Crime,
   loadWineData

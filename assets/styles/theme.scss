@@ -128,9 +128,10 @@ html, body {
 
 // D3
 
-.axis path, .axis line {
+.axis path,
+.axis line {
   fill: none;
-  stroke: #000;
+  stroke: $blue;
   shape-rendering: crispEdges;
 }
 
@@ -152,7 +153,7 @@ html, body {
 
 .data-wrapper{
   position: relative;
-
+  background: black;
 }
 
 .iris-info {
@@ -167,11 +168,10 @@ html, body {
   display: none;
 }
 
-form {
-  > p {
-    display: inline;
-    color: black;
-  }
+.form-inline {
+  color: white;
+  text-align: center;
+  padding-top: 5px;
 }
 
 circle {
@@ -210,12 +210,27 @@ circle {
 
 .loaded-data {
   position: relative;
+}
+
+.wine-info {
+  position: relative;
   > .wine-order {
     position: absolute;
     top: 10px;
   }
 }
 
+table {
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.bordered {
+  width: fit-content;
+  border: 1px solid blue;
+  margin: 0 auto;
+}
 
 
 // Tabs
