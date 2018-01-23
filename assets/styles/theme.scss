@@ -8,7 +8,7 @@ p {
     text-indent: 10px;
 }
 
-h1 {
+h1 , h2, h3 {
   font-family: 'Libre Baskerville', serif;
   color: $transblack;
 }
@@ -128,9 +128,95 @@ html, body {
 
 // D3
 
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.types {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  background: RGBA(255, 255, 255, .11);
+  padding: 10px;
+  > p:hover {
+    background: black;
+  }
+}
+
+
+.data-wrapper{
+  position: relative;
+
+}
+
+.iris-info {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  background: $blue;
+  color: white;
+  margin: 20px;
+  height: 200px;
+  width: 200px;
+  display: none;
+}
+
+form {
+  > p {
+    display: inline;
+    color: black;
+  }
+}
+
+circle {
+  fill-opacity: 0.8
+}
+
+.vis-default-overlay {
+  background: url('http://scottcheng.github.io/d3js-101/images/unemployment.png');
+  height: 500px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding:40px;
+  background-size: cover;
+  @include dark-overlay;
+}
+
+.overlay-content {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 60px;
+  color: $white;
+  > h3 {
+    color: $white;
+    font-family: 'Libre Baskerville', serif;
+  }
+}
+
+.vis-default-overlay::after {
+  background: rgba(0, 0, 0, .75);
+}
+
 .bar:hover {
   fill: red;
 }
+
+.loaded-data {
+  position: relative;
+  > .wine-order {
+    position: absolute;
+    top: 10px;
+  }
+}
+
+
 
 // Tabs
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {

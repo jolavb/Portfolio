@@ -2,6 +2,7 @@ const d3Events = require('./../d3/index')
 
 
 const loadTabEvents = function () {
+  $('.iris-data').on('click', d3Events.Iris)
   $('.wine-data').on('click', d3Events.loadWineData)
   $('.thumbnail').click(function (e) {
     const selected = $(this).attr('aria-controls')

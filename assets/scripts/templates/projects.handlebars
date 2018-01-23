@@ -30,6 +30,7 @@
 
               <!-- Tab panes -->
         <div class="tab-content">
+      <!-- Intro -->
           <div role="tabpanel" class="tab-pane fade in active" id="Intro">
 
             <div class= 'well well-lg'>
@@ -83,6 +84,7 @@
            </div>
 
           </div>
+      <!-- Open Clinic -->
           <div role="tabpanel" class="tab-pane fade" id="OpenClinic">
             <div class= 'row well well-lg'>
               <div class= 'col-md-5 col-sm-12'>
@@ -149,6 +151,7 @@
               </div>
             </div>
           </div>
+      <!-- Grocery Basket -->
           <div role="tabpanel" class="tab-pane fade" id="Grocery-Basket">
             <div class= 'row well well-lg'>
               <div class= 'col-md-5 col-sm-12'>
@@ -156,64 +159,68 @@
               </div>
               <div class= 'panel-intro panel-section col-md-7 col-sm-12'>
                 <h1> Grocery Basket </h1>
-                <p>Browse discount grocery items from your favorite Boston Area
-                  Grocery Store. Powered by the Grocery-Basket API.</p>
+                <p>Browse discount grocery items from your favorite Boston </br> Area
+                  Grocery Store.Powered by the Grocery-Basket API.</p>
                 <a target="_blank" href='https://jolavb.github.io/Grocery-Basket/'><button class='search btn btn-success'> Browse Discounts </button></a>
               </div>
               <div class= 'col-xs-12 panel-section'>
-                <legend> <h3> Open Clinic Client </h3></legend>
-                <p>This Ember client application queries the open-clinic-api to view,
-                   search and add comments to any public clinical trial submitted to
-                   clinicalTrials.gov as of January 1st, 2017 served by the api.
-                   Users may sign in to search clincial trials by phase, view trial
-                   information as well as comment on a specific trial.</p>
-                <h4 class='dev'> Client Development </h4>
-                <p>Following the pattern I established to tackle the many
-                  tables and relationships included in the back-end API,
-                  I added models to the ember framework one at a time.
-                  Once a model had been added, I followed the Data Down,
-                  Actions Up approach to fetch and pass model data down
-                  to the correct componenet. Once I was satisfied with the
-                  rendering and actions required for one model, I moved onto
-                  related models, and finally to the search params to filter studies
-                  by phase.</p>
+                <legend> <h3> About  </h3></legend>
+                <p>I have developed this Single Page Application out of my own frustration
+                  at reliably acessing and aggregating on sale grocery items into recipies.
+                  The goal of Grocery-Basket is to allow the collection and aggregation of on-sale grocery
+                  items from the greater boston area into cheap and delicious recipies. Food item and store
+                  html data are collected weekly and stored in a postgres db running on heroku.</p>
+                  <p>This first version of Grocery-Basket allows a user to select a grocery store to
+                  display and add on-sale items to thier cart. Cart items may be updated or deleted and
+                  a user may use the cart as a reference while shopping at thier local grocery store.</p>
+                </div>
 
-                  <a target="_blank" href='https://github.com/jolavb/open-clinic-client'>
+                <div class= 'col-xs-12 panel-section'>
+                  <legend> <h3> Grocery-Basket Client  </h3></legend>
+                  <p> The Grocery-Basket client communicates with the Grocery-Basket API
+                    to retrieve and display on-sale grocery items from select boston
+                    area grocery stores. Pages are organized into handlebars templates
+                    which are rendered based on user actions.
+                  </p>
+
+                  <h4 class='dev'> Client Development </h4>
+                  <p> Organization was key in developing the Grocery-Basket front end. Ajax
+                    call success and failures often trigger the rendering of various
+                    handelbars templates depending on the application state. I made use
+                    of handlebars custom helpers and created several custom helpers
+                    to manupulate the rendering of particular templates.
+                  </p>
+                  <a target="_blank" href='https://github.com/jolavb/Grocery-Basket'>
                     <img src='public/github.ico' class='img img-responsive github'>
                     <span>View Client Repository</span>
                   </a>
+                </div>
 
-              </div>
-              <div class= 'col-xs-7 panel-section'>
-                <legend> <h3> API Development</h3></legend>
-                <p>This Rails API serves public clinical trial data to the Open-Clinic-API
-                  from a postgres database containing a complete record of clinical trials
-                  submitted to clinicalTrials.gov as of January 1st, 2017. The underlying database
-                  was originally cloned from <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> and extended to
-                  include user authentication and user-owned resources.</p>
+              <div class= 'col-xs-12 panel-section'>
+                <legend> <h3> Grocery-Basket API</h3></legend>
+                <p>This Rails API is built on top of a Postgres database containing weekly
+                  web scraped grocery sale-item information. Stores and Items tables
+                  are related in a one to many relationship, and Users are related to
+                  Items through the cart-items table.
+                </p>
 
                   <h4 class='dev'> Developing the API</h4>
-                  <p>I intentionally bit off more than I could chew by cloning a large existing database from
-                    <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> with
-                    over 40 tabls and relationships. I have
-                    taken small steps and added relationships, models,
-                    routes and Controllers for 1 table at a time. I began with the
-                    primary table, which all others are related; the studies table.
-                    One each route was performing as anticipated, with the correct information
-                    serialized, I progressed to the next table.</p>
-
-                    <a target="_blank" href= 'https://github.com/jolavb/open-clinic-api'>
+                  <p>The main challenge in developing this rails API was collecting
+                    the sale-item information. I decided to develop the scraper in Python
+                    since I was most familiar with the BeautifulSoup python package and could
+                    leverage my experience with pandas dataframes to help relate and clean information once collected. Once the
+                    scraper is finished loading data to csv's the data is imported to the database
+                    via a ruby seed script. In order to be friendly to the servers hosting scraped information,
+                    I set random delays (from .5 to 5 seconds) between requests.
+                  </p>
+                    <a target="_blank" href= 'https://github.com/jolavb/Grocery-Basket-API'>
                       <img src='public/github.ico' class='img img-responsive github'>
                       <span>View API Repository</span>
                     </a>
-
-              </div>
-              <div class= 'panel-image col-xs-5'>
-                <h4> Entity Relationships </h4>
-                <a target="_blank"href="https://imgur.com/pAfJgNR"><img class='img img-responsive' src="https://i.imgur.com/pAfJgNR.png" title="source: imgur.com" /></a>
               </div>
             </div>
           </div>
+      <!-- Tic-Tac-Doh -->
           <div role="tabpanel" class="tab-pane fade" id="Tic-Tac">
             <div class= 'row well well-lg'>
               <div class= 'col-md-5 col-sm-12'>
@@ -281,6 +288,7 @@
             </div>
 
           </div>
+      <!-- Jeb -->
           <div role="tabpanel" class="tab-pane fade" id="JEB">
             <div class= 'row well well-lg'>
               <div class= 'col-md-5 col-sm-12'>
@@ -345,18 +353,27 @@
               </div>
             </div>
           </div>
+      <!-- Visualizations -->
           <div role="tabpanel" class="tab-pane fade" id="Data-Vis">
             <div class= 'row well well-lg'>
               <div class= 'col-sm-12'>
+                <ul class="nav nav-pills data-navpils">
+                  <li role="presentation" class='wine-data'><a href="#">Wine Prices</a></li>
+                  <li role="presentation" class='iris-data'><a href="#">Iris Data Set</a></li>
+                  <li role="presentation"><a href="#">Mapped Crime</a></li>
+                </ul>
+                <div class='loaded-data'>
+                  <div class='vis-default-overlay'>
+                    <div class='overlay-content'>
+                      <h3> Data Driven Documents </h3>
+                      <p> The following are a few visualizations I built using the powerful
+                        D3.js javascript library. Select a tab to display the related
+                      data visualization.</p>
+                    </div>
+                  <div>
 
-                <!-- Wine Price Visualization -->
-                <legend> Average Wine Price by Country </legend>
-                <div class= 'wrapper'>
-                  <div class='loaded-data'>
-                    <button class='wine-data btn btn-primary'> Load Wine Price CSV Data </button>
-                    <svg  class='wine' width='1200' height="500"></svg>
-                  </div>
                 </div>
+              </div>
               </div>
             </div>
 
