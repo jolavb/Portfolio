@@ -10,6 +10,7 @@ const timeline = require('./../templates/timeline.handlebars')
 const pageEvents = require('./pageEvents')
 
 
+
 // Consolidate Handlebars Views
 const views = {
   home: home({view: true}),
@@ -27,11 +28,6 @@ const loadClickEvents = function () {
   $('.container-fluid').keyup(keyActions)
 }
 
-// loads inner page click events on page render
-// const loadPageClickEvents = function (view) {
-//   $('.page-tab').on('click', pageEvents.linksHandler)
-//   return view
-// }
 
 // Navbar Link Events Show Views depending on target
 const linksHandler = function () {
