@@ -101,7 +101,15 @@ html, body {
 }
 
 .search {
-  @include elegant-icon('icon_search','after');
+  @include elegant-icon('icon_search', 'after');
+}
+
+.upload {
+  @include elegant-icon('icon_cloud-upload', 'after');
+}
+
+.nuclear {
+  @include elegant-icon('icon_genius', 'after');
 }
 
 .github {
@@ -116,6 +124,12 @@ html, body {
   > h4 {
     padding-top: 20px;
   }
+}
+
+// D3
+
+.bar:hover {
+  fill: red;
 }
 
 // Tabs
