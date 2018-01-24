@@ -186,7 +186,7 @@ circle {
 }
 
 .vis-default-overlay {
-  background: url('/public/d3-america.png');
+  background: url('https://i.imgur.com/9mreDyw.png');
   height: 500px;
   position: relative;
   z-index: 1;
@@ -248,7 +248,7 @@ table {
 }
 
 .projects-overview {
-  > .col-xs-3 {
+  > .col-sm-6 {
     text-align: center;
   }
 }
