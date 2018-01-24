@@ -121,15 +121,20 @@
                   </a>
 
               </div>
-              <div class= 'col-xs-7 panel-section'>
-                <legend> <h3> API Development</h3></legend>
+              <div class= 'col-xs-12 panel-section'>
+                <legend> <h3> Open-Clinic-API</h3></legend>
                 <p>This Rails API serves public clinical trial data to the Open-Clinic-API
                   from a postgres database containing a complete record of clinical trials
                   submitted to clinicalTrials.gov as of January 1st, 2017. The underlying database
                   was originally cloned from <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> and extended to
                   include user authentication and user-owned resources.</p>
 
-                  <h4 class='dev'> Developing the API</h4>
+                  <div class= 'panel-image entity-rels img-right'>
+                    <h4> Entity Relationships </h4>
+                    <a target="_blank"href="https://imgur.com/pAfJgNR"><img class='img img-responsive' src="https://i.imgur.com/pAfJgNR.png" title="source: imgur.com" /></a>
+                  </div>
+
+                  <h4 class='dev'> API Development</h4>
                   <p>I intentionally bit off more than I could chew by cloning a large existing database from
                     <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> with
                     over 40 tabls and relationships. I have
@@ -145,10 +150,7 @@
                     </a>
 
               </div>
-              <div class= 'panel-image col-xs-5'>
-                <h4> Entity Relationships </h4>
-                <a target="_blank"href="https://imgur.com/pAfJgNR"><img class='img img-responsive' src="https://i.imgur.com/pAfJgNR.png" title="source: imgur.com" /></a>
-              </div>
+
             </div>
           </div>
       <!-- Grocery Basket -->
@@ -182,6 +184,8 @@
                     area grocery stores. Pages are organized into handlebars templates
                     which are rendered based on user actions.
                   </p>
+
+                  <img src='public/cornucopia.png' class='img img-responsive img-right'>
 
                   <h4 class='dev'> Client Development </h4>
                   <p> Organization was key in developing the Grocery-Basket front end. Ajax
@@ -228,62 +232,40 @@
               </div>
               <div class= 'panel-intro panel-section col-md-7 col-sm-12'>
                 <h1> Tic-Tac-Doh! </h1>
-                <p>Play this simpsons themed tic tac toe game and keep track of
+                <p>Play this simpsons themed tic tac toe game and keep track of </br>
                   your wins and loses. Don't get burned!
                  </p>
                 <a target="_blank" href='https://jolavb.github.io/tic-tac-doe/'><button class='nuclear btn btn-success'>Sign up to Play!  </button></a>
               </div>
               <div class= 'col-xs-12 panel-section'>
-                <legend> <h3> Open Clinic Client </h3></legend>
-                <p>This Ember client application queries the open-clinic-api to view,
-                   search and add comments to any public clinical trial submitted to
-                   clinicalTrials.gov as of January 1st, 2017 served by the api.
-                   Users may sign in to search clincial trials by phase, view trial
-                   information as well as comment on a specific trial.</p>
-                <h4 class='dev'> Client Development </h4>
-                <p>Following the pattern I established to tackle the many
-                  tables and relationships included in the back-end API,
-                  I added models to the ember framework one at a time.
-                  Once a model had been added, I followed the Data Down,
-                  Actions Up approach to fetch and pass model data down
-                  to the correct componenet. Once I was satisfied with the
-                  rendering and actions required for one model, I moved onto
-                  related models, and finally to the search params to filter studies
-                  by phase.</p>
-
-                  <a target="_blank" href='https://github.com/jolavb/open-clinic-client'>
-                    <img src='public/github.ico' class='img img-responsive github'>
-                    <span>View Client Repository</span>
-                  </a>
-
+                <legend> <h3> About </h3></legend>
+                <p>Tic-Tac-Doe was the first project I submitted in the General Assembly
+                Web Immersive Course. The goal was to build a front end application
+                which successfully communicated with a 3rd party API to keep track of
+                tic-tac-toe gameplay. After meeting  requirements for the project, I decided
+                to add in a Simpsons theme and gameplay statistics. </p>
               </div>
-              <div class= 'col-xs-7 panel-section'>
-                <legend> <h3> API Development</h3></legend>
-                <p>This Rails API serves public clinical trial data to the Open-Clinic-API
-                  from a postgres database containing a complete record of clinical trials
-                  submitted to clinicalTrials.gov as of January 1st, 2017. The underlying database
-                  was originally cloned from <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> and extended to
-                  include user authentication and user-owned resources.</p>
-
-                  <h4 class='dev'> Developing the API</h4>
-                  <p>I intentionally bit off more than I could chew by cloning a large existing database from
-                    <a href='https://www.ctti-clinicaltrials.org/'>clinicaltrials.org</a> with
-                    over 40 tabls and relationships. I have
-                    taken small steps and added relationships, models,
-                    routes and Controllers for 1 table at a time. I began with the
-                    primary table, which all others are related; the studies table.
-                    One each route was performing as anticipated, with the correct information
-                    serialized, I progressed to the next table.</p>
-
-                    <a target="_blank" href= 'https://github.com/jolavb/open-clinic-api'>
+              <div class= 'col-xs-12 panel-section'>
+                <legend> <h3> Tic-Tac-Doe Client</h3></legend>
+                <p> The Tic-Tac-Doe client was developed in javascript, jQuery and Sass. I seperated
+                  coding concerns wherever possible by dividing up javascript/jquery code. For example,
+                  Ajax.js is soley responsible for Ajax calls to the tic-tac-toe api enpoints and ui.js
+                  is soley responsible for updating the DOM in response to various events.
+                </p>
+                  <img src='public/homer.png' class='img img-responsive img-right'>
+                  <h4 class='dev'> Client Development</h4>
+                  <p>Rather than attempting to build out the html, css and game logic first
+                    ( as I was tempted to do), I began by making calls to the provided API
+                    in order to familiarize myself with it's methods and responses.
+                    This proved extremely beneficial and helped me write game logic that
+                    interacted fluidly with the api later in the process. Once I had successfully
+                    called and reviewed the apis methods and responses, I began forming the game logic
+                    around it. Upon encountering errors, I reviewed error codes and logged suspect
+                    variables to make sure they were what I expected them to be.</p>
+                    <a target="_blank" href= 'https://github.com/jolavb/tic-tac-doe'>
                       <img src='public/github.ico' class='img img-responsive github'>
                       <span>View API Repository</span>
                     </a>
-
-              </div>
-              <div class= 'panel-image col-xs-5'>
-                <h4> Entity Relationships </h4>
-                <a target="_blank"href="https://imgur.com/pAfJgNR"><img class='img img-responsive' src="https://i.imgur.com/pAfJgNR.png" title="source: imgur.com" /></a>
               </div>
             </div>
 
