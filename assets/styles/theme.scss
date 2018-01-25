@@ -1,5 +1,59 @@
 
+// slider
+
+.slider-wrap{
+  // position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.slick-slide {
+  padding: 5px;
+}
+
+.slide {
+  position: relative;
+  text-align: center;
+}
+
+.slide-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: $transblack2;
+  > h4 {
+    padding: 20px;
+    color: $white;
+  }
+}
+
+.slider{
+ width: 95%;
+ margin: 0 auto;
+}
+
+
+// Footer
+.intro-footer{
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
 // General
+
+.sidebar,
+.content {
+  padding: 0;
+}
+
+.sidebar {
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.4);
+}
+
 legend {
   border-bottom: 1px solid $blue;
 }
@@ -8,7 +62,8 @@ p {
     text-indent: 10px;
 }
 
-h1 , h2, h3 {
+
+h1 , h2, h3, h4{
   font-family: 'Libre Baskerville', serif;
   color: $transblack;
 }
@@ -29,6 +84,7 @@ html, body {
 
 .main {
   height: 100%;
+  position: relative;
 }
 
 .background-intro {
@@ -38,10 +94,11 @@ html, body {
 }
 
 .intro-text-wrap {
-  position: absolute;
+  width:40%;
+  margin: 0 auto;
+  position: relative;
   text-align: center;
-  top: 25%;
-  padding-left: 10%;
+  padding-top: 5%;
   font-family: 'Libre Baskerville', serif;
   color: $transblack;
 
@@ -60,7 +117,6 @@ html, body {
   top: 25%;
   padding-top: 20px;
   padding-bottom: 20px;
-  width: 80%;
   .nav {
     position: relative;
     text-align: center
@@ -93,6 +149,22 @@ html, body {
 
 }
 
+// Intro
+.background {
+  // position: absolute;
+  // // height: 100%;
+  // width: 100%;
+  // // background: url('http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-1.jpg');
+  // background-position:  center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+}
+
+.profile-pic {
+  max-width: 150px;
+  border-radius: 40px;
+}
+
 
 // Icons
 
@@ -112,9 +184,37 @@ html, body {
   @include elegant-icon('icon_genius', 'after');
 }
 
+.next-slider {
+  @include elegant-icon('icon_genius', 'after');
+}
+
+.previous-slider {
+  @include elegant-icon('icon_genius', 'after');
+
+}
+
 .github {
-  width: 40px;
+  width: 30px;
   display: inline;
+  padding-bottom: 10px;
+}
+
+.linked-in {
+  @include elegant-icon('social_linkedin');
+  font-size: 30px;
+}
+
+.email {
+  @include elegant-icon('icon_mail_alt');
+  font-size: 30px;
+}
+
+.social-icons {
+  list-style: none;
+  > li {
+    float: left;
+
+  }
 }
 
 // Panels
@@ -263,7 +363,6 @@ table {
   height: inherit;
   > .row {
     height: inherit;
-
   }
 }
 
