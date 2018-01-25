@@ -1,5 +1,6 @@
 
 <div class = 'row main'>
+
   {{#unless view}}
   <div class = 'col col-md-2 sidebar'>
     <nav class = 'navbar'>
@@ -14,17 +15,52 @@
       </ul>
     </nav>
   </div>
-  <div class = 'col col-md-10 content'>
-  {{/unless}}
-    <img class = 'background-intro' src = 'public/hiking.png'>
-    <div class = 'intro-text-wrap'>
-      <h1>Julian Barthold</h1>
-      <h4>Full Stack Web Developer <span class='glyphicon glyphicon-asterisk'></span> Data Collector</h4>
-      <img class = 'logos'src = 'public/logos.png'>
-      <a href="public/resume.pdf" download>
-      <button class='btn btn-success'>Download Resume</button>
-      </a>
-    </div>
-  </div>
+    <div class = 'col col-md-10 content'>
+          {{/unless}}
+
+        <div class='intro-text-wrap'>
+          <img src='public/profile.jpg' class='img profile-pic img-responsive img-thumbnail'>
+          <legend><h3>Julian Barthold</h3></legend>
+          <h4>Full Stack Web Developer <span class='glyphicon glyphicon-asterisk'></span> Data Collector</h4>
+          <img class = 'logos'src = 'public/logos.png'>
+          <a href="public/resume.pdf" download>
+          <button class='btn btn-success'>Download Resume</button>
+          </a>
+        </div>
+
+        <div class='slider-wrap'>
+          <div class='slider' id='projects'>
+          <div class= 'slide'>
+            <div class='slide-overlay'> <h4> Grocery Basket </h4> </div>
+            <img class='img img-responsive' src='public/grocery.png'>
+          </div>
+          <div class= 'slide'>
+            <div class='slide-overlay'> <h4> D3 Visualizations </h4> </div>
+              <img class='img img-responsive' src='public/d3.png'>
+          </div>
+          <div class= 'slide'>
+            <div class='slide-overlay'> <h4>Open Clinic<h4> </div>
+              <img class='img img-responsive'src='public/open-clinic-clean.png'>
+          </div>
+          <div class= 'slide'>
+            <div class='slide-overlay'> <h4> JEB File Hosting <h4> </div>
+              <img class='img img-responsive' src='public/jeb-clean.png'>
+          </div>
+          <div class= 'slide'>
+            <div class='slide-overlay'> <h4> Tic Tac Doe </h4> </div>
+            <img class='img img-responsive' src='public/doh.png'>
+          </div>
+        </div>
+        </div>
+
+        <div class='intro-footer'>
+          <p> Custom Design by Julian Barthold </p>
+          <div class='icons'>
+            <a class='linked-in' href='https://www.linkedin.com/in/julian-barthold/'> </a>
+            <a class='email' href="mailto:bartholjulian@gmail.com?Subject=Hi%20Julian"> </a>
+            <a href='https://github.com/jolavb'> <img class='github' src='public/github.png' alt='github'></a>
+          </div>
+        </div>
+
 </div>
 <!-- https://i.imgur.com/Oa2BbhG.png -->

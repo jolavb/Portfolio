@@ -1,4 +1,6 @@
 
+// Slider Render
+import 'slick-carousel'
 // HandleBars Templates
 const home = require('./../templates/main.handlebars')
 const about = require('./../templates/about.handlebars')
@@ -21,11 +23,31 @@ const views = {
 }
 
 // Loads Navbar Link Events on Main Page Load
-
 const loadClickEvents = function () {
   $('.navlink').on('click', linksHandler)
   $('.arrow').on('click', scrollLinks)
   $('.container-fluid').keyup(keyActions)
+  $('.slider').on('click', function () {
+    pickView(this)
+      .then(showView)
+      .then(() => activateLink('#projects'))
+      .then(pageEvents.loadTabEvents)
+      .catch(console.error)
+  })
+}
+
+// Renders Slider if homeview is rendered
+const loadSLider = function (view) {
+  if (view === 'home') {
+    $('.slider').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000
+    })
+  }
+  loadClickEvents()
+  return view
 }
 
 
@@ -35,6 +57,7 @@ const linksHandler = function () {
   // FadeOut Resolved.
     .then(activateLink)
     .then(showView)
+    .then(loadSLider)
     .then(pageEvents.loadTabEvents)
     .catch(console.log)
 }
@@ -61,7 +84,7 @@ const showView = function (target) {
 
 // Link Events- removes active class from all li's adds active to target
 const activateLink = function (target) {
-  $('li').removeClass('active')
+  $('.navlink').removeClass('active')
   $(target).addClass('active')
   return target
 }
