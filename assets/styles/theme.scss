@@ -1,4 +1,6 @@
 
+
+
 // slider
 
 .slider-wrap{
@@ -41,6 +43,37 @@
 }
 
 // General
+
+.profile-pic-div {
+  text-align: center;
+  width: 25%;
+  margin: 0 auto;
+}
+
+.clear {
+  clear: both;
+}
+
+.sig {
+  margin-right: 50px;
+  max-width: 300px;
+  float: right;
+  clear: both;
+}
+
+.about-img-right {
+  float: right;
+  max-width: 200px;
+  border: 1px solid #347ab7;
+  margin-left: 15px;
+}
+
+.about-img-left {
+  float: left;
+  max-width: 200px;
+  border: 1px solid #347ab7;
+  margin-right: 15px;
+}
 
 .main {
   margin: 0;
@@ -163,7 +196,7 @@ html, body {
 .intro {
   height: 55%;
   position: relative;
-  background: url('/public/Adams.jpg');
+  background: url('https://i.imgur.com/yvsInyz.jpg');
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;

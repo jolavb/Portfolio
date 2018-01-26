@@ -6,7 +6,7 @@ const home = require('./../templates/main.handlebars')
 const about = require('./../templates/about.handlebars')
 const projects = require('./../templates/projects.handlebars')
 const experiance = require('./../templates/experiance.handlebars')
-const timeline = require('./../templates/timeline.handlebars')
+// const timeline = require('./../templates/timeline.handlebars')
 
 // Dependecies
 const pageEvents = require('./pageEvents')
@@ -19,7 +19,7 @@ const views = {
   about: about(),
   projects: projects(),
   experiance: experiance(),
-  timeline: timeline()
+  // timeline: timeline()
 }
 
 // Loads Navbar Link Events on Main Page Load
@@ -95,7 +95,6 @@ const keyActions = function () {
     ArrowDown: $('.down'),
     ArrowUp: $('.up')
   }
-  console.log(upDown[event.key])
   scrollLinks.call(upDown[event.key])
 }
 
