@@ -29,14 +29,24 @@ const loadClickEvents = function () {
   $('.navlink').on('click', linksHandler)
   $('.arrow').on('click', scrollLinks)
   $('.container-fluid').keyup(keyActions)
-  $('.slider').on('click', function () {
+  $('.slide').on('click', function () {
+    let ActiveLink = '#projects'
+    if ($(this).hasClass('projects')) {
+      $(this).attr('id', 'projects')
+    } else {
+      $(this).attr('id', 'visualizations')
+      ActiveLink = '#visualizations'
+    }
     pickView(this)
       .then(showView)
-      .then(() => activateLink('#projects'))
+      .then(() => activateLink(ActiveLink))
       .then(pageEvents.loadTabEvents)
       .catch(console.error)
   })
 }
+
+
+
 
 // Renders Slider if homeview is rendered
 const loadSLider = function (view) {

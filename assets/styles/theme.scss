@@ -4,20 +4,19 @@
 // about
 
 .about-me {
-  padding: 80px;
+  padding: 10px 150px 150px;
 }
 
 // slider
 
 .slider-wrap{
-  // position: absolute;
   width: 100%;
   left: 0;
   bottom: 0;
 }
 
 .slick-slide {
-  padding: 5px;
+ padding: 10px;
 }
 
 .slide {
@@ -36,10 +35,16 @@
   }
 }
 
+.slide-overlay:hover {
+  background: $transwhite2;
+}
+
+
 .slider{
  width: 95%;
  margin: 0 auto;
 }
+
 
 
 // Footer
@@ -413,6 +418,12 @@ table {
   margin: 0 auto;
 }
 
+
+// Nav Pages
+
+.nav-page {
+  margin: 20px;
+}
 
 // Tabs
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
