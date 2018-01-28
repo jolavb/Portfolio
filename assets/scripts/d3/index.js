@@ -146,7 +146,6 @@ const loadWineData = function () {
 }
 
 const Iris = function () {
-  loaded = false
   removeActive()
   $('.iris-data').addClass('active')
 
