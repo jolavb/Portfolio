@@ -6,11 +6,11 @@ const home = require('./../templates/main.handlebars')
 const about = require('./../templates/about.handlebars')
 const projects = require('./../templates/projects.handlebars')
 const experiance = require('./../templates/experiance.handlebars')
+const visualizations = require('./../templates/d3.hbs')
 // const timeline = require('./../templates/timeline.handlebars')
 
 // Dependecies
 const pageEvents = require('./pageEvents')
-
 
 
 // Consolidate Handlebars Views
@@ -19,6 +19,7 @@ const views = {
   about: about(),
   projects: projects(),
   experiance: experiance(),
+  visualizations: visualizations()
   // timeline: timeline()
 }
 
@@ -27,14 +28,29 @@ const loadClickEvents = function () {
   $('.navlink').on('click', linksHandler)
   $('.arrow').on('click', scrollLinks)
   $('.container-fluid').keyup(keyActions)
-  $('.slider').on('click', function () {
+  SlideEvents()
+}
+
+
+const SlideEvents = function () {
+  $('.slide').on('click', function () {
+    let ActiveLink = '#projects'
+    if ($(this).hasClass('projects')) {
+      $(this).attr('id', 'projects')
+    } else {
+      $(this).attr('id', 'visualizations')
+      ActiveLink = '#visualizations'
+    }
     pickView(this)
       .then(showView)
-      .then(() => activateLink('#projects'))
+      .then(() => activateLink(ActiveLink))
       .then(pageEvents.loadTabEvents)
       .catch(console.error)
   })
 }
+
+
+
 
 // Renders Slider if homeview is rendered
 const loadSLider = function (view) {
@@ -46,7 +62,7 @@ const loadSLider = function (view) {
       autoplaySpeed: 2000
     })
   }
-  loadClickEvents()
+  SlideEvents()
   return view
 }
 

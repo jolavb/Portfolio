@@ -1,17 +1,22 @@
 
 
 
+// about
+
+.about-me {
+  padding: 10px 150px 150px;
+}
+
 // slider
 
 .slider-wrap{
-  // position: absolute;
   width: 100%;
   left: 0;
   bottom: 0;
 }
 
 .slick-slide {
-  padding: 5px;
+ padding: 10px;
 }
 
 .slide {
@@ -30,10 +35,16 @@
   }
 }
 
+.slide-overlay:hover {
+  background: $transwhite2;
+}
+
+
 .slider{
  width: 95%;
  margin: 0 auto;
 }
+
 
 
 // Footer
@@ -306,15 +317,35 @@ html, body {
 }
 
 .iris-info {
+  text-align: center;
+  position: relative;
+  > svg {
+    overflow: visible;
+  }
+}
+
+.iris-table {
   position: absolute;
-  right: 0;
-  bottom: 5px;
-  background: $blue;
-  color: white;
-  margin: 20px;
-  height: 200px;
-  width: 200px;
-  display: none;
+  bottom: 50px;
+  right: 50px;
+  color: $blue;
+  font-family: 'Libre Baskerville', serif;
+
+}
+
+.color-axis {
+  > path {
+    stroke: $white;
+  }
+}
+
+.tick {
+  > line {
+    stroke: $white;
+  }
+  > text {
+    fill: $white;
+  }
 }
 
 .form-inline {
@@ -362,11 +393,17 @@ circle {
 }
 
 .wine-info {
+  text-align: center;
   position: relative;
-  > .wine-order {
-    position: absolute;
-    top: 10px;
-  }
+}
+
+.crime-info {
+  text-align: center;
+}
+
+.wine-order {
+  width: 200px;
+  margin: 0 auto;
 }
 
 table {
@@ -381,6 +418,12 @@ table {
   margin: 0 auto;
 }
 
+
+// Nav Pages
+
+.nav-page {
+  margin: 20px;
+}
 
 // Tabs
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {

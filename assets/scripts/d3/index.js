@@ -7,17 +7,22 @@ const IrisHbs = require('./../templates/innerpage/iris.hbs')
 const D3 = require('./d3.min.js')
 const getFormFields = require('./../../../lib/get-form-fields')
 
+
+// Variables
+let loaded = false
+
 const removeActive = function() {
   $('.data-navpils li').removeClass('active')
 }
 
 const loadWineData = function () {
+  loaded = false
   // clear content
+  D3.select('.crime-info svg').remove()
+
   $('.loaded-data').html(WineHbs())
   removeActive()
   $('.wine-data').addClass('active')
-  D3.select('.crime-info svg').remove()
-  D3.select('.wine-order').remove()
 
   // Dimensions
   const outerWidth = 1200
@@ -95,16 +100,10 @@ const loadWineData = function () {
       .attr('y', function (d) { return yAxis(d.price) })
       .attr('height', function (d) { return height - yAxis(d.price) })
 
-    const sortOrder = ['Ascending', 'Descending']
 
-    const options = D3.select('.wine-info').append('select')
-      .attr('class', 'wine-order form-control')
+    // Event Listener for Change Order
+    D3.select('.wine-order')
       .on('change', orderBy)
-      .selectAll('option')
-      .data(sortOrder)
-      .enter().append('option')
-      .text(function (d) { return d })
-      .attr('value', function (d) { return d })
 
     function orderBy () {
       const bars = svg.selectAll('.bar')
@@ -149,17 +148,22 @@ const loadWineData = function () {
 const Iris = function () {
   removeActive()
   $('.iris-data').addClass('active')
-  $('.loaded-data').html(IrisHbs())
+
+  if (!loaded) {
+    $('.loaded-data').html(IrisHbs({'loaded': loaded}))
+  } else {
+    $('svg').remove()
+  }
 
   const formData = $('form').serializeArray()
 
   // clear div
-  D3.select('.loaded-data3 svg').remove()
+  // D3.select('.loaded-data3 svg').remove()
   // Load Data and Call Render
   D3.csv('public/Iris.csv', type, render)
 
-  const outerWidth = 1000
-  const outerHeight = 700
+  const outerWidth = 1200
+  const outerHeight = 500
   const innerWidth = outerWidth - 30 - 30
   const innerHeight = outerHeight - 30 - 30
 
@@ -171,7 +175,7 @@ const Iris = function () {
   const rMax = 20
 
   // svg
-  const svg = D3.select('.loaded-data3').append('svg')
+  const svg = D3.select('.iris-info').append('svg')
     .attr('width', outerWidth)
     .attr('height', outerHeight)
 
@@ -199,10 +203,18 @@ const Iris = function () {
     const colorScale = D3.scaleOrdinal(D3.schemeCategory10)
 
     svg.append('g')
+      .attr('class', 'color-axis')
       .call(D3.axisBottom(xScale))
-      .attr('transform', 'translate(0,' + (outerHeight - 20) + ')')
+      .attr('transform', 'translate(0,' + (outerHeight - 10) + ')')
       .selectAll('text')
       .style('text-anchor', 'end')
+
+    svg.append('g')
+      .attr('class', 'color-axis')
+      .call(D3.axisLeft(yScale))
+      .selectAll('text')
+      .style('text-anchor', 'end')
+
 
     const circles = g.selectAll('circle').data(data)
 
@@ -227,10 +239,10 @@ const Iris = function () {
   }
 
   function displayInfo (info) {
-    $('.iris-info').html('')
-    $('.iris-info').hide()
+    $('.iris-table').html('')
+    $('.iris-table').hide()
 
-    const itembox = D3.select('.iris-info')
+    const itembox = D3.select('.iris-table')
     const itemInfo = itembox.selectAll('tr').data(Object.keys(info))
     itemInfo.enter().append('tr').append('td')
       .text(function (key) {
@@ -238,9 +250,10 @@ const Iris = function () {
           return key + ': ' + info[key]
         }
       })
-    $('.iris-info').fadeIn(200)
+    $('.iris-table').fadeIn(200)
   }
 // Add Change Event After Template Load
+  loaded = true
   $('select').on('change', Iris)
 }
 
