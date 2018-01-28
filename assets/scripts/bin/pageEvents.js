@@ -8,7 +8,6 @@ const loadTabEvents = function () {
     const selected = $(this).attr('aria-controls')
     $('.page-tab').removeClass('active')
     $('li > a[aria-controls=' + selected + ']').parent().addClass('active')
-    // $(this).tab('show')
   })
 }
 

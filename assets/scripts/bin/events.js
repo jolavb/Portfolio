@@ -6,6 +6,7 @@ const home = require('./../templates/main.handlebars')
 const about = require('./../templates/about.handlebars')
 const projects = require('./../templates/projects.handlebars')
 const experiance = require('./../templates/experiance.handlebars')
+const visualizations = require('./../templates/d3.hbs')
 // const timeline = require('./../templates/timeline.handlebars')
 
 // Dependecies
@@ -19,6 +20,7 @@ const views = {
   about: about(),
   projects: projects(),
   experiance: experiance(),
+  visualizations: visualizations()
   // timeline: timeline()
 }
 

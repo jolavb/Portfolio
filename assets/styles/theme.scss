@@ -1,6 +1,12 @@
 
 
 
+// about
+
+.about-me {
+  padding: 80px;
+}
+
 // slider
 
 .slider-wrap{
@@ -306,15 +312,35 @@ html, body {
 }
 
 .iris-info {
+  text-align: center;
+  position: relative;
+  > svg {
+    overflow: visible;
+  }
+}
+
+.iris-table {
   position: absolute;
-  right: 0;
-  bottom: 5px;
-  background: $blue;
-  color: white;
-  margin: 20px;
-  height: 200px;
-  width: 200px;
-  display: none;
+  bottom: 50px;
+  right: 50px;
+  color: $blue;
+  font-family: 'Libre Baskerville', serif;
+
+}
+
+.color-axis {
+  > path {
+    stroke: $white;
+  }
+}
+
+.tick {
+  > line {
+    stroke: $white;
+  }
+  > text {
+    fill: $white;
+  }
 }
 
 .form-inline {
@@ -362,11 +388,17 @@ circle {
 }
 
 .wine-info {
+  text-align: center;
   position: relative;
-  > .wine-order {
-    position: absolute;
-    top: 10px;
-  }
+}
+
+.crime-info {
+  text-align: center;
+}
+
+.wine-order {
+  width: 200px;
+  margin: 0 auto;
 }
 
 table {
