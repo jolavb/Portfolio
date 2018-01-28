@@ -13,7 +13,6 @@ const visualizations = require('./../templates/d3.hbs')
 const pageEvents = require('./pageEvents')
 
 
-
 // Consolidate Handlebars Views
 const views = {
   home: home({view: true}),
@@ -29,6 +28,11 @@ const loadClickEvents = function () {
   $('.navlink').on('click', linksHandler)
   $('.arrow').on('click', scrollLinks)
   $('.container-fluid').keyup(keyActions)
+  SlideEvents()
+}
+
+
+const SlideEvents = function () {
   $('.slide').on('click', function () {
     let ActiveLink = '#projects'
     if ($(this).hasClass('projects')) {
@@ -58,7 +62,7 @@ const loadSLider = function (view) {
       autoplaySpeed: 2000
     })
   }
-  loadClickEvents()
+  SlideEvents()
   return view
 }
 

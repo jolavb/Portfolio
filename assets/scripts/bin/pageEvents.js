@@ -1,6 +1,7 @@
 const d3Events = require('./../d3/index')
 
-const loadTabEvents = function () {
+const loadTabEvents = function (view) {
+  console.log(view)
   $('.crime-data').on('click', d3Events.Crime)
   $('.iris-data').on('click', d3Events.Iris)
   $('.wine-data').on('click', d3Events.loadWineData)
