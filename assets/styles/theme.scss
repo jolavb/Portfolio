@@ -55,6 +55,12 @@
 
 // General
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .profile-pic-div {
   text-align: center;
   width: 25%;
@@ -146,6 +152,10 @@ html, body {
   width: 100%;
 }
 
+.intro-legend {
+  margin: 0;
+}
+
 .intro-text-wrap {
   width:40%;
   margin: 0 auto;
@@ -167,7 +177,10 @@ html, body {
 }
 
 .navbar {
-  top: 25%;
+  z-index: 99;
+  width: 140px;
+  top: 8%;
+  position: absolute;
   padding-top: 20px;
   padding-bottom: 20px;
   .nav {
@@ -271,6 +284,10 @@ html, body {
 }
 
 // Panels
+
+.well {
+  margin: 0;
+}
 
 .panel-section {
   padding-top: 20px;
@@ -390,6 +407,7 @@ circle {
 
 .loaded-data {
   position: relative;
+  text-align: center;
 }
 
 .wine-info {
@@ -422,8 +440,13 @@ table {
 // Nav Pages
 
 .nav-page {
-  margin: 20px;
+  margin-left: 145px;
+  margin-right: 5px;
+  // margin-left: 155px;
+  // margin-right: 10px;
 }
+
+$grid-float-breakpoint: 1312px;
 
 // Tabs
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
@@ -444,6 +467,7 @@ table {
 .panel-image {
   text-align: center;
 }
+
 .proj-container {
   height: inherit;
   > .row {
@@ -495,4 +519,27 @@ table {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+// Breakpoints
+
+@media only screen and (max-width: $nav-breakpoint) {
+    .navbar {
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background: none;
+        position: relative;
+        top:0;
+    }
+    .nav-page{
+      margin-left: 5px;
+    }
+
+    .navbar-collapse {
+      width: 100%;
+      background: $transwhite3;
+    }
 }

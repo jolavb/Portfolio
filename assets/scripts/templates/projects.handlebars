@@ -76,7 +76,7 @@
             </div>
         <!-- Open Clinic -->
             <div role="tabpanel" class="tab-pane fade" id="OpenClinic">
-              <div class= 'row well well-lg'>
+              <div class= 'row well'>
                 <div class= 'col-md-5 col-sm-12'>
                   <img class= 'img img-responsive' src='public/openClinic.png'>
                 </div>
@@ -155,68 +155,70 @@
 
               </div>
             </div>
-        <!-- Grocery Basket -->
-            <div role="tabpanel" class="tab-pane fade" id="Grocery-Basket">
-              <div class= 'row well well-lg'>
-                <div class= 'col-md-5 col-sm-12'>
-                  <img class= 'img img-responsive' src='public/Grocery-Basket.png'>
-                </div>
-                <div class= 'panel-intro panel-section col-md-7 col-sm-12'>
-                  <h1> Grocery Basket </h1>
-                  <p>Browse discount grocery items from your favorite Boston </br> Area
-                    Grocery Store.Powered by the Grocery-Basket API.</p>
-                  <a target="_blank" href='https://jolavb.github.io/Grocery-Basket/'><button class='search btn btn-success'> Browse Discounts </button></a>
-                </div>
-                <div class= 'col-xs-12 panel-section'>
-                  <legend> <h3> Background </h3></legend>
-                  <p>I have developed this Single Page Application out of my own frustration
-                    at reliably acessing and aggregating on sale grocery items into recipies.
-                    The goal of Grocery-Basket is to allow the collection and aggregation of on-sale grocery
-                    items from the greater boston area into cheap and delicious recipies. Food item and store
-                    html data are collected weekly and stored in a postgres db running on heroku.</p>
-                    <p>This first version of Grocery-Basket allows a user to select a grocery store to
-                    display and add on-sale items to thier cart. Cart items may be updated or deleted and
-                    a user may use the cart as a reference while shopping at thier local grocery store.</p>
-                    <img src='public/cornucopia.png' class='img img-responsive img-right'>
+            <!-- Grocery Basket -->
+                <div role="tabpanel" class="tab-pane fade" id="Grocery-Basket">
+                  <div class= 'row well'>
+                    <div class= 'col-md-5 col-sm-12'>
+                      <img class= 'img img-responsive' src='public/Grocery-Basket.png'>
+                    </div>
 
-                    <h4 class='dev'> Client Development </h4>
-                    <p> The Grocery-Basket client communicates with the Grocery-Basket API
-                      to retrieve and display on-sale grocery items from select boston
-                      area grocery stores. Pages are organized into handlebars templates
-                      which are rendered based on user actions.
-                    </p>
-                    <p> Organization was key in developing the Grocery-Basket front end. Ajax
-                      call success and failures often trigger the rendering of various
-                      handelbars templates depending on the application state. I made use
-                      of handlebars custom helpers and created several custom helpers
-                      to manupulate the rendering of particular templates.
-                    </p>
-                    <a target="_blank" href='https://github.com/jolavb/Grocery-Basket'>
-                      <img src='public/github.ico' class='img img-responsive github'>
-                      <span>View Client Repository</span>
-                    </a>
+                    <div class= 'panel-intro panel-section col-md-7 col-sm-12'>
+                      <h1> Grocery Basket </h1>
+                      <p>Browse discount grocery items from your favorite Boston </br> Area
+                        Grocery Store.Powered by the Grocery-Basket API.</p>
+                      <a target="_blank" href='https://jolavb.github.io/Grocery-Basket/'><button class='search btn btn-success'> Browse Discounts </button></a>
+                    </div>
 
-                    <h4 class='dev'> API Development</h4>
-                    <p>This Rails API is built on top of a Postgres database containing weekly
-                      web scraped grocery sale-item information. Stores and Items tables
-                      are related in a one to many relationship, and Users are related to
-                      Items through the cart-items table.
-                    </p>
-                    <p>The main challenge in developing this rails API was collecting
-                      the sale-item information. I decided to develop the scraper in Python
-                      since I was most familiar with the BeautifulSoup python package and could
-                      leverage my experience with pandas dataframes to help relate and clean information once collected. Once the
-                      scraper is finished loading data to csv's the data is imported to the database
-                      via a ruby seed script. In order to be friendly to the servers hosting scraped information,
-                      I set random delays (from .5 to 5 seconds) between requests.
-                    </p>
-                      <a target="_blank" href= 'https://github.com/jolavb/Grocery-Basket-API'>
-                        <img src='public/github.ico' class='img img-responsive github'>
-                        <span>View API Repository</span>
-                      </a>
+                    <div class= 'panel-section col-xs-12'>
+                      <legend> <h3> Background </h3></legend>
+                      <p>I have developed this Single Page Application out of my own frustration
+                        at reliably acessing and aggregating on sale grocery items into recipies.
+                        The goal of Grocery-Basket is to allow the collection and aggregation of on-sale grocery
+                        items from the greater boston area into cheap and delicious recipies. Food item and store
+                        html data are collected weekly and stored in a postgres db running on heroku.</p>
+                        <p>This first version of Grocery-Basket allows a user to select a grocery store to
+                        display and add on-sale items to thier cart. Cart items may be updated or deleted and
+                        a user may use the cart as a reference while shopping at thier local grocery store.</p>
+                        <img src='public/cornucopia.png' class='img img-responsive img-right'>
+
+                        <h4 class='dev'> Client Development </h4>
+                        <p> The Grocery-Basket client communicates with the Grocery-Basket API
+                          to retrieve and display on-sale grocery items from select boston
+                          area grocery stores. Pages are organized into handlebars templates
+                          which are rendered based on user actions.
+                        </p>
+                        <p> Organization was key in developing the Grocery-Basket front end. Ajax
+                          call success and failures often trigger the rendering of various
+                          handelbars templates depending on the application state. I made use
+                          of handlebars custom helpers and created several custom helpers
+                          to manupulate the rendering of particular templates.
+                        </p>
+                        <a target="_blank" href='https://github.com/jolavb/Grocery-Basket'>
+                          <img src='public/github.ico' class='img img-responsive github'>
+                          <span>View Client Repository</span>
+                        </a>
+
+                        <h4 class='dev'> API Development</h4>
+                        <p>This Rails API is built on top of a Postgres database containing weekly
+                          web scraped grocery sale-item information. Stores and Items tables
+                          are related in a one to many relationship, and Users are related to
+                          Items through the cart-items table.
+                        </p>
+                        <p>The main challenge in developing this rails API was collecting
+                          the sale-item information. I decided to develop the scraper in Python
+                          since I was most familiar with the BeautifulSoup python package and could
+                          leverage my experience with pandas dataframes to help relate and clean information once collected. Once the
+                          scraper is finished loading data to csv's the data is imported to the database
+                          via a ruby seed script. In order to be friendly to the servers hosting scraped information,
+                          I set random delays (from .5 to 5 seconds) between requests.
+                        </p>
+                          <a target="_blank" href= 'https://github.com/jolavb/Grocery-Basket-API'>
+                            <img src='public/github.ico' class='img img-responsive github'>
+                            <span>View API Repository</span>
+                          </a>
+                      </div>
                   </div>
-              </div>
-            </div>
+                </div>
         <!-- Tic-Tac-Doh -->
             <div role="tabpanel" class="tab-pane fade" id="Tic-Tac">
               <div class= 'row well well-lg'>
