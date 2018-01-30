@@ -11,7 +11,24 @@ const getFormFields = require('./../../../lib/get-form-fields')
 // Variables
 let loaded = false
 
+
+// Chart Actions
+const loadResize = function () {
+  $(window).on('resize', responsive).trigger('resize')
+}
+
+const responsive = function () {
+  console.log('hello')
+  const chart = $('.chart')
+  const aspect = chart.width() / chart.height()
+  const container = chart.parent()
+  const targetWidth = container.width()
+  chart.attr('width', targetWidth)
+  chart.attr('height', Math.round(targetWidth / aspect))
+}
+
 const removeActive = function() {
+  $(window).unbind('resize')
   $('.data-navpils li').removeClass('active')
 }
 
@@ -33,12 +50,17 @@ const loadWineData = function () {
 
   // const svg = D3.select('.wine')
   const svg = D3.select('.wine-info').append('svg')
+    .attr('class', 'chart')
+    .attr('viewBox', '0 0 1200 500')
+    .attr('perserveAspectRatio', 'xMinYMid')
     .attr('width', outerWidth)
     .attr('height', outerHeight)
+
 
   const g = svg.append('g').attr('transform', 'translate(' + 100 + ',' + 100 + ')')
 
   D3.csv('public/wine.csv', render)
+
 
   function render (data) {
     const xAxis = D3.scaleBand()
@@ -141,12 +163,14 @@ const loadWineData = function () {
           console.log('hello')
       }
     }
-
   }
+  loadResize()
 }
+
 
 const Iris = function () {
   removeActive()
+
   $('.iris-data').addClass('active')
 
   if (!loaded) {
@@ -176,6 +200,9 @@ const Iris = function () {
 
   // svg
   const svg = D3.select('.iris-info').append('svg')
+    .attr('class', 'chart')
+    .attr('viewBox', '0 0 1200 500')
+    .attr('perserveAspectRatio', 'xMinYMid')
     .attr('width', outerWidth)
     .attr('height', outerHeight)
 
@@ -212,6 +239,7 @@ const Iris = function () {
     svg.append('g')
       .attr('class', 'color-axis')
       .call(D3.axisLeft(yScale))
+      .attr('transform', 'translate(' + (outerWidth - 10) + ', 0)')
       .selectAll('text')
       .style('text-anchor', 'end')
 
@@ -236,6 +264,7 @@ const Iris = function () {
           .attr('r', function (d) { return rScale(d[rCol]) }) // return scaled radius
       })
     circles.exit().remove()
+    loadResize()
   }
 
   function displayInfo (info) {
@@ -337,6 +366,7 @@ const Crime = function () {
     d.lng = +d.lng
     return d
   }
+  loadResize()
 }
 
 

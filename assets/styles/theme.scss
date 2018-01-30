@@ -4,7 +4,7 @@
 // about
 
 .about-me {
-  padding: 10px 150px 150px;
+  padding: 10px 10% 0 10%;
 }
 
 // slider
@@ -304,6 +304,33 @@ html, body {
 }
 
 // D3
+.data-navpils {
+  display: none;
+}
+
+.d3-thumbs {
+  padding-top: 40px;
+  display: inline-block;
+  > .d3-thumb {
+   display: inline-block;
+   width: 20%;
+
+   > p {
+     color: white;
+   }
+   > img {
+     display: inline-block;
+     padding: 5px;
+   }
+  }
+}
+
+.d3-thumb:hover {
+  background: $transwhite3;
+  > p {
+    color: black;
+  }
+}
 
 .axis path,
 .axis line {
@@ -377,7 +404,7 @@ circle {
 
 .vis-default-overlay {
   background: url('https://i.imgur.com/9mreDyw.png');
-  height: 500px;
+  height: 600px;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -389,7 +416,6 @@ circle {
 .overlay-content {
   width: 50%;
   margin: 0 auto;
-  padding-top: 60px;
   color: $white;
   > h3 {
     color: $white;
@@ -440,6 +466,7 @@ table {
 // Nav Pages
 
 .nav-page {
+  margin-top: 20px;
   margin-left: 145px;
   margin-right: 5px;
   // margin-left: 155px;
@@ -541,5 +568,25 @@ $grid-float-breakpoint: 1312px;
     .navbar-collapse {
       width: 100%;
       background: $transwhite3;
+    }
+
+    .about-me{
+      padding: 10px 0;
+    }
+    .profile-pic-div {
+      width: 100%
+    }
+
+    .about-img-left,
+    .about-img-right {
+      max-width: 150px;
+    }
+
+    .sig {
+      margin: 0;
+    }
+
+    .d3-thumb {
+      width: 30% !important;
     }
 }

@@ -27,7 +27,7 @@ const views = {
 const loadClickEvents = function () {
   $('.navlink').on('click', linksHandler)
   $('.arrow').on('click', scrollLinks)
-  $('.container-fluid').keyup(keyActions)
+  // `$('.container-fluid').keyup(keyActions)`
   SlideEvents()
 }
 
@@ -106,13 +106,13 @@ const activateLink = function (target) {
 }
 
 // Up Down Key Actions
-const keyActions = function () {
-  const upDown = {
-    ArrowDown: $('.down'),
-    ArrowUp: $('.up')
-  }
-  scrollLinks.call(upDown[event.key])
-}
+// const keyActions = function () {
+//   const upDown = {
+//     ArrowDown: $('.down'),
+//     ArrowUp: $('.up')
+//   }
+//   scrollLinks.call(upDown[event.key])
+// }
 
 // Find The correct link based on Arrow Action
 const scrollLinks = function () {
