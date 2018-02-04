@@ -288,6 +288,7 @@ const Iris = function () {
 
 const Crime = function () {
   // Clear Content
+  loaded = false
   $('.loaded-data').html(CrimeHbs())
   // Active Link
   removeActive()
